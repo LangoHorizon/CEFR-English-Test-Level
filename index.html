@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Level Test | LangoHorizon Language Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-language" style="font-size: 2rem; color: var(--primary-color);"></i>
+                <div class="logo-text">Lango<span>Horizon</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#intro-screen"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="courselink"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                    <li><a href="mailto:langohorizon@gmail.com"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-container">
+            <h3>Start Your Language Journey Today!</h3>
+            <div class="ad-content">
+                <p>Join LangoHorizon Academy and get 30% off your first course</p>
+                <a href="#" class="btn-primary">Learn More</a>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="total-tests">0</div>
+                <div class="stat-label">Tests Taken</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50</div>
+                <div class="stat-label">Questions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">CEFR Levels</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Skills Assessed</div>
+            </div>
+        </div>
+
+        <div id="intro-screen" class="screen animate__animated animate__fadeIn">
+            <div class="intro-content">
+                <h2>Welcome to the LangoHorizon English Level Test</h2>
+                <p>This comprehensive assessment will evaluate your English proficiency according to the Common European Framework of Reference (CEFR) standards.</p>
+                <p>Brought to you by <strong>LangoHorizon Language Academy</strong> - Your gateway to language mastery.</p>
+                
+                <ul class="test-info">
+                    <li><span class="icon"><i class="fas fa-stopwatch"></i></span> Duration: Approximately 30 minutes</li>
+                    <li><span class="icon"><i class="fas fa-question-circle"></i></span> Questions: 50 (Grammar, Vocabulary, Reading, Writing)</li>
+                    <li><span class="icon"><i class="fas fa-chart-bar"></i></span> Results: Detailed CEFR assessment (A1 to C2)</li>
+                    <li><span class="icon"><i class="fas fa-undo"></i></span> You can pause and resume anytime</li>
+                </ul>
+                <button id="start-test" class="btn-primary"><i class="fas fa-play"></i> Start Test</button>
+                <a href="https://langohorizon.com" class="btn-secondary"><i class="fas fa-external-link-alt"></i> Visit Our Academy</a>
+            </div>
+        </div>
+
+        <div id="test-screen" class="screen hidden">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="50"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Section <span id="current-section">1</span> of 4</span>
+                    <span>Question <span id="current-question">1</span> of 50</span>
+                </div>
+            </div>
+
+            <div class="section-indicator">
+                <div class="section-dot active" data-section="1"></div>
+                <div class="section-dot" data-section="2"></div>
+                <div class="section-dot" data-section="3"></div>
+                <div class="section-dot" data-section="4"></div>
+            </div>
+
+            <div id="question-container">
+                <h2 id="question-text" lang="en"></h2>
+                <div id="options-container"></div>
+            </div>
+
+            <div class="navigation-buttons">
+                <div class="button-group">
+                    <button id="prev-question" class="btn-secondary" disabled><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button id="next-question" class="btn-primary">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="button-group">
+                    <button id="report-question" class="btn-secondary"><i class="fas fa-flag"></i> Report</button>
+                    <button id="quit-test" class="btn-danger"><i class="fas fa-sign-out-alt"></i> Quit</button>
+                    <button id="submit-test" class="btn-submit hidden"><i class="fas fa-check-circle"></i> Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen hidden">
+            <div class="results-content animate__animated animate__fadeIn">
+                <h2>Your English Level Assessment</h2>
+                <p>Presented by LangoHorizon Language Academy</p>
+                
+                <div class="cefr-level">
+                    <div class="level-gauge">
+                        <div class="gauge-fill" id="level-indicator"></div>
+                    </div>
+                    <div class="level-labels">
+                        <span>A1</span>
+                        <span>A2</span>
+                        <span>B1</span>
+                        <span>B2</span>
+                        <span>C1</span>
+                        <span>C2</span>
+                    </div>
+                </div>
+                
+                <div class="level-description" id="level-description"></div>
+                
+                <div class="score-details">
+                    <h3>Test Breakdown</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" style="--order: 0;">
+                            <h4>Grammar</h4>
+                            <div class="skill-score" id="grammar-score"></div>
+                        </div>
+                        <div class="skill-card" style="--order: 1;">
+                            <h4>Vocabulary</h4>
+                            <div class="skill-score" id="vocabulary-score"></div>
+                        </div>
+                        <div class="skill-card" style="--order: 2;">
+                            <h4>Reading</h4>
+                            <div class="skill-score" id="reading-score"></div>
+                        </div>
+                        <div class="skill-card" style="--order: 3;">
+                            <h4>Writing</h4>
+                            <div class="skill-score" id="writing-score"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-group" style="justify-content: center; margin-top: 30px;">
+                    <button id="retake-test" class="btn-primary"><i class="fas fa-redo"></i> Retake Test</button>
+                    <button id="share-results" class="btn-secondary"><i class="fas fa-share-alt"></i> Share Results</button>
+                    <a href="https://langohorizon.com/enroll" class="btn-primary"><i class="fas fa-graduation-cap"></i> Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="quit-modal" class="screen hidden" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-width: 500px;">
+            <h2>Are you sure you want to quit?</h2>
+            <p>Your progress will be saved and you can resume the test later.</p>
+            <div class="button-group" style="justify-content: center; margin-top: 20px;">
+                <button id="confirm-quit" class="btn-danger"><i class="fas fa-sign-out-alt"></i> Quit Test</button>
+                <button id="cancel-quit" class="btn-secondary"><i class="fas fa-times"></i> Cancel</button>
+            </div>
+        </div>
+
+        <div id="report-modal" class="screen hidden" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-width: 500px;">
+            <h2>Report a Question</h2>
+            <p>Please describe the issue you found with this question:</p>
+            <div class="form-group">
+                <textarea id="report-text" rows="4" placeholder="Describe the problem..."></textarea>
+            </div>
+            <div class="button-group" style="justify-content: center; margin-top: 20px;">
+                <button id="submit-report" class="btn-primary"><i class="fas fa-paper-plane"></i> Submit Report</button>
+                <button id="cancel-report" class="btn-secondary"><i class="fas fa-times"></i> Cancel</button>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2><i class="fas fa-envelope"></i> Contact LangoHorizon</h2>
+            <p>Have questions about our language courses or this assessment? Get in touch with our team.</p>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
+                <div class="form-group full-width">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" placeholder="Subject">
+                </div>
+                <div class="form-group full-width">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Your message"></textarea>
+                </div>
+                <div class="form-group full-width" style="text-align: center;">
+                    <button class="btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <h3>Ready to Take Your English to the Next Level?</h3>
+            <div class="ad-content">
+                <p>Join LangoHorizon's personalized English courses tailored to your CEFR level</p>
+                <a href="https://langohorizon.com/enroll" class="btn-primary"><i class="fas fa-graduation-cap"></i> Enroll Now</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>LangoHorizon</h3>
+                <p>Your premier destination for language learning and cultural exploration.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1G3BmgYf3M/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/LangoHorizon?t=930YQgnGYSHAnVP9hviT1Q&s=09"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/langohorizon?igsh=MWNhYTN4Zmdlang4eA=="><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/langohorizon-online-academy-925168367?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Teachers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Free Lessons</a></li>
+                    <li><a href="#">Language Tools</a></li>
+                    <li><a href="#">CEFR Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-language"></i> LangoHorizon</li>
+                    <li><i class="fas fa-phone"></i> +93 (0) 77 629 3240</li>
+                    <li><i class="fas fa-envelope"></i> langohorizon@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 LangoHorizon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>
